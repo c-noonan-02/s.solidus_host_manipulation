@@ -196,3 +196,13 @@ ggplot(predation_5b, aes(x = infection_status, y = predation_success, fill = inf
   scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
   theme_classic() +
   theme(legend.position = "none")
+
+
+
+
+#### To-Do List ####
+
+# correct working directories
+# generate legend (if needed?)
+# save all plots to folder
+# figure out how to compound plots from ggplot
