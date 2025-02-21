@@ -20,7 +20,7 @@ library(patchwork)
 
 
 
-#### FIGURE 3 ####
+#### Figure 3 ####
 
 # Import data sets
 attack_rate_3a <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_3a", range = "A1:D46")
@@ -269,7 +269,7 @@ figure_5_final <- plot_grid(
   ggdraw() +
     draw_label("Attempted Attacks", fontface = "bold", size = 12, x = 0.10, y = 0.5) +
     draw_label("Successful Predation Attempts", fontface = "bold", size = 12, x = 0.66, y = 0.5),
-  figure_4,
+  figure_5,
   ncol = 1,
   rel_heights = c(0.05, 1))
 
