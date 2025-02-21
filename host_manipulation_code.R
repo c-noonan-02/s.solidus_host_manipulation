@@ -114,3 +114,44 @@ ggplot(predation_3f, aes(x = infection_status, y = predation_success, fill = inf
   scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
   theme_classic() +
   theme(legend.position = "none")
+
+
+
+
+#### Figure 4 ####
+
+# Import data sets
+attack_rate_4a <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_4a", range = "A1:D46")
+predation_4b <- read_excel("./predation_success.xlsx", sheet = "predation_4b", range = "A1:D46")
+
+# Pivot data frames so that ggplot can read them
+attack_rate_4a <- attack_rate_4a %>%
+  pivot_longer(cols = c(non_infected, infected_under_50mg, infected_over_50mg), 
+               names_to = "infection_status", 
+               values_to = "attack_rate")
+predation_4b <- predation_4b %>%
+  pivot_longer(cols = c(non_infected, infected_under_50mg, infected_over_50mg), 
+               names_to = "infection_status",
+               values_to = "predation_success")
+
+# Plot Figures
+
+# Figure 4a
+ggplot(attack_rate_4a, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
+  geom_bar(stat = "summary", fun = "mean", position = "dodge") +
+  labs(x = "Infection Status", y = "Avg. Attacks per Individual") +
+  geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
+  scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
+  scale_fill_manual(values = c("non_infected" = "springgreen2", "infected_under_50mg" = "springgreen3", "infected_over_50mg" = "springgreen4")) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+# Figure 4b
+ggplot(predation_4b, aes(x = infection_status, y = predation_success, fill = infection_status)) +
+  geom_bar(stat = "summary", fun = "mean", position = "dodge") +
+  labs(x = "Infection Status", y = "Average Probability of Predation per Individual") +
+  geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
+  scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
+  scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
+  theme_classic() +
+  theme(legend.position = "none")
