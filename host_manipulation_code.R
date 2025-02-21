@@ -13,9 +13,9 @@ rm(list=ls())
 library(ggplot2)
 library(tidyr)
 library(dplyr)
-
-
-
+library(readxl)
+library(cowplot)
+library(patchwork)
 
 #### FIGURE 3 ####
 
@@ -56,64 +56,96 @@ predation_3f <- predation_3f %>%
 # Plot Figures
 
 # Figure 3a
-ggplot(attack_rate_3a, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
+figure_3a <- ggplot(attack_rate_3a, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Avg. Attacks per Individual") +
+  labs(x = "Infection Status", y = "Average Attacks") +
+  ylim(0,10) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "springgreen2", "infected_under_50mg" = "springgreen3", "infected_over_50mg" = "springgreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3a
 
 # Figure 3b
-ggplot(predation_3b, aes(x = infection_status, y = predation_success, fill = infection_status)) +
+figure_3b <- ggplot(predation_3b, aes(x = infection_status, y = predation_success, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Average Probability of Predation per Individual") +
+  labs(x = "Infection Status", y = "Average Probability \nof Predation") +
+  ylim(0,1) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3b
 
 # Figure 3c
-ggplot(attack_rate_3c, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
+figure_3c <- ggplot(attack_rate_3c, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Avg. Attacks per Individual") +
+  labs(x = "Infection Status", y = "Average Attacks") +
+  ylim(0,10) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "springgreen2", "infected_under_50mg" = "springgreen3", "infected_over_50mg" = "springgreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3c
 
 # Figure 3d
-ggplot(predation_3d, aes(x = infection_status, y = predation_success, fill = infection_status)) +
+figure_3d <- ggplot(predation_3d, aes(x = infection_status, y = predation_success, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Average Probability of Predation per Individual") +
+  labs(x = "Infection Status", y = "Average Probability \nof Predation") +
+  ylim(0,1) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3d
 
 # Figure 3e
-ggplot(attack_rate_3e, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
+figure_3e<- ggplot(attack_rate_3e, aes(x = infection_status, y = attack_rate, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Avg. Attacks per Individual") +
+  labs(x = "Infection Status", y = "Average Attacks") +
+  ylim(0,10) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "springgreen2", "infected_under_50mg" = "springgreen3", "infected_over_50mg" = "springgreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3e
 
 # Figure 3f
-ggplot(predation_3f, aes(x = infection_status, y = predation_success, fill = infection_status)) +
+figure_3f <- ggplot(predation_3f, aes(x = infection_status, y = predation_success, fill = infection_status)) +
   geom_bar(stat = "summary", fun = "mean", position = "dodge") +
-  labs(x = "Infection Status", y = "Average Probability of Predation per Individual") +
+  labs(x = "Infection Status", y = "Average Probability \nof Predation") +
+  ylim(0,1) +
   geom_errorbar(stat = "summary", fun.data = "mean_se", width = 0.2) +
   scale_x_discrete(limits=c("non_infected", "infected_under_50mg", "infected_over_50mg"), labels = c("Non-Infected", "Infected (<50mg)", "Infected (>50mg)")) +
   scale_fill_manual(values = c("non_infected" = "palegreen2", "infected_under_50mg" = "palegreen3", "infected_over_50mg" = "palegreen4")) +
   theme_classic() +
-  theme(legend.position = "none")
+  theme(legend.position = "none", axis.title = element_text(size = 10), axis.text = element_text(size = 8), plot.title = element_text(hjust = 0, face = "bold")) +
+  ggtitle(" ")
+figure_3f
+
+figure_3 <- plot_grid(figure_3a, figure_3b, figure_3c, figure_3d, figure_3e, figure_3f, nrow = 3, ncol = 2, labels = c("A)", "B)", "C)", "D)", "E)", "F)")) 
+# figure_3 <- plot_grid(figure_3a, figure_3b, figure_3c, figure_3d, figure_3e, figure_3f, nrow = 3, ncol = 2, rel_widths = c(1,1), rel_heights = c(1,1,1)) 
+
+
+figure_3_final <- plot_grid(
+  ggdraw() +
+    draw_label("Number of Attempted Attacks", fontface = "bold", size = 12, x = 0.18, y = 0.5) +
+    draw_label("Successful Predation Attempts", fontface = "bold", size = 12, x = 0.68, y = 0.5),
+  figure_3,
+  ncol = 1,
+  rel_heights = c(0.05, 1))
+
+figure_3_final
 
 
 
@@ -203,5 +235,5 @@ ggplot(predation_5b, aes(x = infection_status, y = predation_success, fill = inf
 #### To-Do List ####
 
 # generate legend (if needed?)
-# save all plots to folder
+# save all plots to folder # ggsave("sex_counts_pot.png", width = 15, height = 10, units = "cm")
 # figure out how to compound plots from ggplot
