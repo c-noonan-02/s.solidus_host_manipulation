@@ -20,12 +20,12 @@ library(dplyr)
 #### FIGURE 3 ####
 
 # Import data sets
-attack_rate_3a <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_3a", range = "A1:D46")
-predation_3b <- read_excel("./predation_success.xlsx", sheet = "predation_3b", range = "A1:D46")
-attack_rate_3c <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_3c", range = "A1:D46")
-predation_3d <- read_excel("./predation_success.xlsx", sheet = "predation_3d", range = "A1:D46")
-attack_rate_3e <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_3e", range = "A1:D46")
-predation_3f <- read_excel("./predation_success.xlsx", sheet = "predation_3f", range = "A1:D46")
+attack_rate_3a <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_3a", range = "A1:D46")
+predation_3b <- read_excel("data/predation_success.xlsx", sheet = "predation_3b", range = "A1:D46")
+attack_rate_3c <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_3c", range = "A1:D46")
+predation_3d <- read_excel("data/predation_success.xlsx", sheet = "predation_3d", range = "A1:D46")
+attack_rate_3e <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_3e", range = "A1:D46")
+predation_3f <- read_excel("data/predation_success.xlsx", sheet = "predation_3f", range = "A1:D46")
 
 # Pivot data frames so that ggplot can read them
 attack_rate_3a <- attack_rate_3a %>%
@@ -121,8 +121,8 @@ ggplot(predation_3f, aes(x = infection_status, y = predation_success, fill = inf
 #### Figure 4 ####
 
 # Import data sets
-attack_rate_4a <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_4a", range = "A1:D46")
-predation_4b <- read_excel("./predation_success.xlsx", sheet = "predation_4b", range = "A1:D46")
+attack_rate_4a <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_4a", range = "A1:D46")
+predation_4b <- read_excel("data/predation_success.xlsx", sheet = "predation_4b", range = "A1:D46")
 
 # Pivot data frames so that ggplot can read them
 attack_rate_4a <- attack_rate_4a %>%
@@ -162,8 +162,8 @@ ggplot(predation_4b, aes(x = infection_status, y = predation_success, fill = inf
 #### Figure 5 ####
 
 # Import data sets
-attack_rate_5a <- read_excel("./attack_rates.xlsx", sheet = "attack_rate_5a", range = "A1:D46")
-predation_5b <- read_excel("./predation_success.xlsx", sheet = "predation_5b", range = "A1:D46")
+attack_rate_5a <- read_excel("data/attack_rates.xlsx", sheet = "attack_rate_5a", range = "A1:D46")
+predation_5b <- read_excel("data/predation_success.xlsx", sheet = "predation_5b", range = "A1:D46")
 
 # Pivot data frames so that ggplot can read them
 attack_rate_5a <- attack_rate_5a %>%
@@ -202,7 +202,6 @@ ggplot(predation_5b, aes(x = infection_status, y = predation_success, fill = inf
 
 #### To-Do List ####
 
-# correct working directories
 # generate legend (if needed?)
 # save all plots to folder
 # figure out how to compound plots from ggplot
